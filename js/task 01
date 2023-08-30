@@ -1,8 +1,29 @@
-const categorias = document.querySelectorAll("#categories > li.item");
-console.log(`Número de categorías: ${categorias.length}`);
-categorias.forEach((e) => {
-  let nombre = e.querySelector("h2").innerText;
-  let elementos = e.querySelectorAll("li");
-  console.log(`Categoría: ${nombre}
-Elementos: ${elementos.length}`);
+//const categories = document.querySelectorAll("#categories > li.item");
+//console.dir(`Numnber of categories: ${categories.length}`);
+//categories.forEach((e) => {
+//  let number = e.querySelector("h2").innerText;
+//  let elements = e.querySelectorAll("li");
+//  console.dir(`Category: ${number}
+//Elements: ${elements.length}`);
+//});
+
+const ingredients = [
+  "Potatoes",
+  "Mushrooms",
+  "Garlic",
+  "Tomatos",
+  "Herbs",
+  "Condiments",
+];
+
+const itemEl = [];
+const listEl = document.querySelector("#ingredients");
+
+ingredients.map((ingredient) => {
+  const element = document.createElement("li");
+  element.textContent = ingredient;
+  element.classList.add("item");
+
+  itemEl.push(element);
+  listEl.append(element);
 });
