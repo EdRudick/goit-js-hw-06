@@ -1,32 +1,32 @@
-//const categories = document.querySelectorAll("#categories > li.item");
-//console.dir(`Numnber of categories: ${categories.length}`);
-//categories.forEach((e) => {
-//  let number = e.querySelector("h2").innerText;
-//  let elements = e.querySelectorAll("li");
-//  console.dir(`Category: ${number}
-//Elements: ${elements.length}`);
-//});
+const categories = document.querySelectorAll("#categories > li.item");
+console.dir(`Numnber of categories: ${categories.length}`);
+categories.forEach((e) => {
+  let number = e.querySelector("h2").innerText;
+  let elements = e.querySelectorAll("li");
+  console.dir(`Category: ${number}
+Elements: ${elements.length}`);
+});
 
-/*const ingredients = [
+const ingredients = [
   "Potatoes",
   "Mushrooms",
   "Garlic",
   "Tomatos",
   "Herbs",
   "Condiments",
-];*/
+];
 
-//const itemEl = [];
-//const listEl = document.querySelector("#ingredients");
+const itemEl = [];
+const listEl = document.querySelector("#ingredients");
 
-//ingredients.map((ingredient) => {
-// const element = document.createElement("li");
-//  element.textContent = ingredient;
-//  element.classList.add("item");
-//
-//  itemEl.push(element);
-//  listEl.append(element);
-//});
+ingredients.map((ingredient) => {
+  const element = document.createElement("li");
+  element.textContent = ingredient;
+  element.classList.add("item");
+
+  itemEl.push(element);
+  listEl.append(element);
+});
 
 const images = [
   {
@@ -43,12 +43,31 @@ const images = [
   },
 ];
 
-const list = document.querySelector("./js/task_01");
+for (let img of images)
+  document
+    .querySelector(".gallery")
+    .insertAdjacentHTML(
+      "beforeEnd",
+      `<li><img class="list" src="${img.url}" alt="${img.alt}"></li>`
+    );
 
-function createMarkup(arr) {
-  return arr
-    .map(({ img,  }) =>
-      `<li><img scr="${img}" url="${} alt="${}"></li>`)
-    .join("");
-}
-list.insertAdjacentHTML("beforeend", createMarkup(images));
+const wrap_button = {
+  sub: document.querySelector("[data-action='increment']"),
+  add: document.querySelector("[data-action='decrement']"),
+  span: document.querySelector("#value"),
+  wrapper: document.querySelector("#counter "),
+};
+let counterValue = 0;
+const increment = () => {
+  counterValue += 1;
+
+  document.getElementById("value").textContent = counterValue;
+};
+
+const decrement = () => {
+  counterValue -= 1;
+
+  document.getElementById("value").textContent = counterValue;
+};
+wrap_button.sub.addEventListener("click", increment);
+wrap_button.add.addEventListener("click", decrement);
